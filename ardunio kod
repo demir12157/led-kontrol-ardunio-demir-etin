@@ -1,0 +1,22 @@
+int redPin = 9;
+int greenPin = 10;
+int bluePin = 11;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(redPin, OUTPUT);
+  pinMode(greenPin, OUTPUT);
+  pinMode(bluePin, OUTPUT);
+}
+
+void loop() {
+  if (Serial.available() >= 3) {  // R, G, B verilerini bekliyoruz
+    int r = Serial.read();
+    int g = Serial.read();
+    int b = Serial.read();
+    
+    analogWrite(redPin, r);   // Kırmızı LED
+    analogWrite(greenPin, g); // Yeşil LED
+    analogWrite(bluePin, b);  // Mavi LED
+  }
+}
